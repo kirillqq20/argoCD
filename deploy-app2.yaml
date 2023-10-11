@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app-2
+  labels:
+    app: test-app-2
+  namespace: py-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp-2
+  template:
+    metadata:
+      labels:
+        app: myapp-2
+    spec:
+      containers:
+        - name: myapp-2
+          image: kirillqq20/python-webserver:v1
+          ports:
+            - containerPort: 80
